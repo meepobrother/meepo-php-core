@@ -1,14 +1,18 @@
 <?php
 
+ini_set('display_errors', true);
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/vendor/autoload.php';
 
-use React\EventLoop\Factory;
 use Rx\Observable;
+use React\EventLoop\Factory;
 use Rx\Scheduler;
 
 $loop = Factory::create();
 
-Scheduler::setDefaultFactory(function () use ($loop) {
+//You only need to set the default scheduler once
+Scheduler::setDefaultFactory(function() use($loop){
     return new Scheduler\EventLoopScheduler($loop);
 });
 
