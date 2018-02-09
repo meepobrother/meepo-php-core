@@ -1,0 +1,11 @@
+{
+    "name": "meepo/meepo-php-core",
+    "description": "meepo php core",
+    "authors": [
+        {
+            "name": "15138730370",
+            "email": "1037483576@qq.com"
+        }
+    ],
+    "require": {}
+}
