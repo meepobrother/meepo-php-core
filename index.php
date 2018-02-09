@@ -4,23 +4,25 @@ ini_set('display_errors', true);
 error_reporting(E_ALL);
 
 require_once __DIR__ . '/vendor/autoload.php';
-use React\EventLoop\Factory;
-use Rx\Observable;
+
+$createStdoutObserver = function ($prefix = '') {
+    return new \Rx\Observer\CallbackObserver(
+        function ($value) use ($prefix) {echo $prefix . "Next value: " . asString($value) . "\n";},
+        function ($error) use ($prefix) {echo $prefix . "Exception: " . $error->getMessage() . "\n";},
+        function () use ($prefix) {echo $prefix . "Complete!\n";}
+    );
+};
 
 try {
-
-    $loop = Factory::create();
-
-    Observable::interval(1000)
-        ->take(5)
-        ->flatMap(function ($i) {
-            return Observable::of($i + 1);
-        })
-        ->subscribe(function ($e) {
-            echo $e, PHP_EOL;
-        });
-
-    $loop->run();
+    $subject = new \Rx\Subject\AsyncSubject();
+    // Send a value
+    $subject->onNext('42');
+    $subject->onCompleted();
+    // Hide its type
+    $source = $subject->asObservable();
+    $source->subscribe($createStdoutObserver());
 } catch (Exception $e) {
+    print_r("error log start \n");
     print_r($e);
+    print_r("error log end \n");
 }
