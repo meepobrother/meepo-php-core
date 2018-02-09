@@ -1,0 +1,21 @@
+{
+  "name": "meepo-php-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "php": "curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=meepobrother&apiToken=KT7iOjwSRzMJKi_IgsOi' -d'{'repository':{'url':'https://github.com/meepobrother/meepo-php-core.git'}}'",
+    "git": "git add . && git commit -m 'update to save' && git push origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meepobrother/meepo-php-core.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meepobrother/meepo-php-core/issues"
+  },
+  "homepage": "https://github.com/meepobrother/meepo-php-core#readme"
+}
