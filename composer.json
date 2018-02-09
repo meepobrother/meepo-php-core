@@ -9,7 +9,7 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "psr/log": "~1.0",
+        "psr/log": "^1.0",
         "react/event-loop": "^0.4.3",
         "reactivex/rxphp": "^1.5"
     },
